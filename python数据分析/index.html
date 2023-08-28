@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Python数据分析 - Friends&#43;&#43;</title><meta name="Description" content="show me the f**k code"><meta property="og:title" content="Python数据分析" />
+<meta property="og:description" content="1，数据分析要点 -目的需求，明确分析逻辑 -数据处理分析 -数据可视化展示 2，相关介绍 1、方法论，分析的逻辑 1.1 PEST分析法 PEST分析是指宏观" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" /><meta property="og:image" content="https://stormblinger-ai.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-12-18T16:15:32+08:00" />
+<meta property="article:modified_time" content="2019-12-18T16:15:32+08:00" /><meta property="og:site_name" content="我的网站" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://stormblinger-ai.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Python数据分析"/>
+<meta name="twitter:description" content="1，数据分析要点 -目的需求，明确分析逻辑 -数据处理分析 -数据可视化展示 2，相关介绍 1、方法论，分析的逻辑 1.1 PEST分析法 PEST分析是指宏观"/>
+<meta name="application-name" content="我的网站">
+<meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" /><link rel="next" href="https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Python数据分析",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/stormblinger-ai.github.io\/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90\/"
+        },"genre": "posts","wordcount":  1329 ,
+        "url": "https:\/\/stormblinger-ai.github.io\/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90\/","datePublished": "2019-12-18T16:15:32+08:00","dateModified": "2019-12-18T16:15:32+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "去哪里寻找大腿"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Friends&#43;&#43;">世界和平</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Friends&#43;&#43;">世界和平</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python数据分析</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>去哪里寻找大腿</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2019-12-18">2019-12-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1329 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1数据分析要点">1，数据分析要点</a></li>
+    <li><a href="#2相关介绍">2，相关介绍</a>
+      <ul>
+        <li><a href="#1方法论分析的逻辑">1、方法论，分析的逻辑</a>
+          <ul>
+            <li><a href="#11---pest分析法">1.1   PEST分析法</a></li>
+            <li><a href="#12--5w2h分析法">1.2  5W2H分析法</a></li>
+            <li><a href="#13--逻辑树分析法">1.3  逻辑树分析法</a></li>
+            <li><a href="#14--4p营销理论">1.4  4P营销理论</a></li>
+            <li><a href="#15--scqa分析法">1.5  SCQA分析法</a></li>
+            <li><a href="#1--6smart分析法">1.  6SMART分析法</a></li>
+            <li><a href="#17--swot分析法">1.7  SWOT分析法</a></li>
+          </ul>
+        </li>
+        <li><a href="#2数据处理分析">2、数据处理分析</a>
+          <ul>
+            <li><a href="#21数据清洗">2.1数据清洗</a></li>
+            <li><a href="#22数据分析">2.2数据分析</a></li>
+          </ul>
+        </li>
+        <li><a href="#3数据可视化">3、数据可视化</a></li>
+      </ul>
+    </li>
+    <li><a href="#3常用库">3，常用库</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1数据分析要点">1，数据分析要点</h2>
+<p>-目的需求，明确分析逻辑</p>
+<p>-数据处理分析</p>
+<p>-数据可视化展示</p>
+<h2 id="2相关介绍">2，相关介绍</h2>
+<h3 id="1方法论分析的逻辑">1、方法论，分析的逻辑</h3>
+<h4 id="11---pest分析法">1.1   PEST分析法</h4>
+<p>PEST分析是指宏观环境的分析，宏观环境是指影响一切行业或企业的各种宏观力量。P是政治(Politics)，E是经济(Economy)，S是社会(Society)，T是技术(Technology)。通常是战略咨询顾问用来帮助企业检阅其外部宏观环境的一种方法</p>
+<h4 id="12--5w2h分析法">1.2  5W2H分析法</h4>
+<p>5W2H分析法又称七何分析法，包括：Why、What、Where、When、Who、How、How much 。主要用于用户行为分析、业务问题专题分析、营销活动等，是一个方便又实用的工具。</p>
+<h4 id="13--逻辑树分析法">1.3  逻辑树分析法</h4>
+<p>逻辑树是分析问题最常用的工具之一，它是将问题的所有子问题分层罗列，从最高层开始，并逐步向下扩展。使用逻辑树分析的主要优点是保证解决问题的过程的完整性，且方便将工作细分为便于操作的任务，确定各部分的优先顺序，明确地把责任落实到个人。</p>
+<h4 id="14--4p营销理论">1.4  4P营销理论</h4>
+<p>4P即产品（Product）、价格（Price）、渠道（Place）、促销（Promotion），在营销领域，这种以市场为导向的营销组合理论，被企业应用最普遍。通过将四者的结合、协调发展，从而提高企业的市场份额，达到最终获利的目的。</p>
+<p>4P营销理论适用于分析企业的经营状况，可视为企业内部环境，PEST分析的是企业在外部面对的环境。</p>
+<h4 id="15--scqa分析法">1.5  SCQA分析法</h4>
+<p>SCQA分析是一个“结构化表达”工具，即S（Situation）情景、C（Complication）冲突、Q（Question）疑问、A（Answer）回答。</p>
+<p>整个结构是通过描述当事者的现实状态，然后带出冲突和核心问题，通过结构化分析以提供更为明智的解决方案。</p>
+<h4 id="1--6smart分析法">1.  6SMART分析法</h4>
+<p>SMART法是一种目标管理方法，即对目标的S（Specific）明确性，M（Measurable）可衡量性，A（Attainable）可实现性，R（Relevant）相关性，T（Time-based）时限性。</p>
+<h4 id="17--swot分析法">1.7  SWOT分析法</h4>
+<p>SWOT分析法也叫态势分析法，S （Strengths）是优势、W （Weaknesses）是劣势，O （Opportunities）是机会、T  （Threats）是威胁或风险。常用来确定企业自身的内部优势、劣势和外部的机会和威胁等，从而将公司的战略与公司内部与外部环境有机地结合起来。</p>
+<h3 id="2数据处理分析">2、数据处理分析</h3>
+<h4 id="21数据清洗">2.1数据清洗</h4>
+<p>是指对数据进行预处理，包括去除重复值、缺失值、异常值等，以提高数据的质量</p>
+<h4 id="22数据分析">2.2数据分析</h4>
+<p>数据分析的技术方法是指提取出关键指标信息的具体方法，如对比分析、交叉分析、回归预测分析等方法。包括统计分析、机器学习等，以发现数据中的规律和趋势</p>
+<h3 id="3数据可视化">3、数据可视化</h3>
+<p>数据可视化是指将数据以图表等形式展示出来，以便更好地理解和分析数据。</p>
+<h2 id="3常用库">3，常用库</h2>
+<p>Python数据分析中常用的库和框架有很多，以下是一些常见的：</p>
+<ul>
+<li>数据挖掘：NumPy、SciPy、Matplotlib、Pandas、ScikitLearn、Keras、Gensim等 。</li>
+<li>数据清洗：Pandas、NumPy等。</li>
+<li>数据分析：Pandas、NumPy等。</li>
+<li>数据可视化：Matplotlib、Seaborn、Plotly、powerbi、ECharts</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2019-12-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" data-title="Python数据分析"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" data-title="Python数据分析"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" data-title="Python数据分析"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" data-title="Python数据分析"><i data-svg-src="/lib/simple-icons/icons/baidu.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" class="next" rel="next" title="基于Vue.js&#43;Django的web项目 Django项目创建">基于Vue.js+Django的web项目 Django项目创建<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">去哪里寻找大腿</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

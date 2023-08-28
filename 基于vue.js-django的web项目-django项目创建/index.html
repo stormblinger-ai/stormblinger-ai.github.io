@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>基于Vue.js&#43;Django的web项目 Django项目创建 - Friends&#43;&#43;</title><meta name="Description" content="show me the f**k code"><meta property="og:title" content="基于Vue.js&#43;Django的web项目 Django项目创建" />
+<meta property="og:description" content="Django的创建与项目结构 虚拟环境&#43;项目&#43;APP创建 pycharm创建纯净的Python项目&#43;虚拟环境 安装Django和相关库API 创建A" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" /><meta property="og:image" content="https://stormblinger-ai.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-18T13:44:44+08:00" />
+<meta property="article:modified_time" content="2021-06-18T13:44:44+08:00" /><meta property="og:site_name" content="我的网站" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://stormblinger-ai.github.io/logo.png"/>
+
+<meta name="twitter:title" content="基于Vue.js&#43;Django的web项目 Django项目创建"/>
+<meta name="twitter:description" content="Django的创建与项目结构 虚拟环境&#43;项目&#43;APP创建 pycharm创建纯净的Python项目&#43;虚拟环境 安装Django和相关库API 创建A"/>
+<meta name="application-name" content="我的网站">
+<meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" /><link rel="prev" href="https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" /><link rel="next" href="https://stormblinger-ai.github.io/%E4%BB%8Eweb3%E5%88%B0%E5%85%83%E5%AE%87%E5%AE%99/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "基于Vue.js+Django的web项目 Django项目创建",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/stormblinger-ai.github.io\/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA\/"
+        },"genre": "posts","wordcount":  11751 ,
+        "url": "https:\/\/stormblinger-ai.github.io\/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA\/","datePublished": "2021-06-18T13:44:44+08:00","dateModified": "2021-06-18T13:44:44+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "去哪里寻找大腿"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Friends&#43;&#43;">世界和平</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Friends&#43;&#43;">世界和平</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">基于Vue.js+Django的web项目 Django项目创建</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>去哪里寻找大腿</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-06-18">2021-06-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11751 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;24 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1虚拟环境项目app创建使用pycharm20223创建">1，虚拟环境+项目+APP创建（使用pycharm2022.3创建）</a></li>
+    <li><a href="#2django安装和创建app">2，Django安装和创建APP</a></li>
+    <li><a href="#3目录结构调整">3，目录结构调整</a></li>
+    <li><a href="#4settings目录">4，settings目录</a></li>
+    <li><a href="#5-pycharm运行配置">5, pycharm运行配置</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1常见app注册">1、常见APP注册，</a></li>
+    <li><a href="#2数据库配置">2、数据库配置</a></li>
+    <li><a href="#3静态文件和上传文件配置">3、静态文件和上传文件配置</a></li>
+    <li><a href="#4日志配置">4、日志配置</a></li>
+    <li><a href="#5文档配置">5、文档配置</a></li>
+    <li><a href="#6异常配置">6、异常配置</a></li>
+    <li><a href="#7任务队列">7、任务队列</a>
+      <ul>
+        <li><a href="#mainpy和configpy">main.py和config.py</a></li>
+        <li><a href="#taskspy">tasks.py</a></li>
+      </ul>
+    </li>
+    <li><a href="#8定时任务">8、定时任务</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1创建app">1、创建APP</a></li>
+    <li><a href="#2app注册">2、APP注册</a></li>
+    <li><a href="#3模型models创建迁移">3、模型models创建/迁移</a>
+      <ul>
+        <li><a href="#classmeta">classmeta</a></li>
+      </ul>
+    </li>
+    <li><a href="#4后台admin集成">4、后台admin集成</a></li>
+    <li><a href="#5序列化器serializer编写">5、序列化器serializer编写</a></li>
+    <li><a href="#6视图view">6、视图view</a>
+      <ul>
+        <li><a href="#orm对应的mysql操作">orm对应的MySQL操作</a></li>
+        <li><a href="#django-redis对应redis中操作">django-redis对应Redis中操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#7路由urls子路由总路由">7、路由urls、子路由——&gt;总路由</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="django的创建与项目结构">Django的创建与项目结构</h1>
+<ul>
+<li>虚拟环境+项目+APP创建
+<ol>
+<li>pycharm创建纯净的Python项目+虚拟环境</li>
+<li>安装Django和相关库API</li>
+<li>创建APP</li>
+<li>运行</li>
+</ol>
+</li>
+</ul>
+<h2 id="1虚拟环境项目app创建使用pycharm20223创建">1，虚拟环境+项目+APP创建（使用pycharm2022.3创建）</h2>
+<p>虚拟环境创建选择有多种，virtualenv，pipenv，conda，或者选用PDM相关的本地环境都可以，我这里主要选用virtualenv，后期项目做大，迭代版本或者多版本共存，出现三方库，包依赖管理问题时，建议conda或PDM/poetry</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2django安装和创建app">2，Django安装和创建APP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="mi">1</span><span class="err">，</span><span class="n">安装Django3</span><span class="mf">.2</span>
+</span></span><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">==</span><span class="mf">3.2</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="p">,</span><span class="n">安装djangorestframework</span>
+</span></span><span class="line"><span class="cl"><span class="n">安装DRF3</span><span class="o">.</span><span class="n">x版本</span><span class="err">，</span><span class="n">包名为djangorestframework</span><span class="err">，</span><span class="mf">2.</span><span class="n">x包名为django</span><span class="o">-</span><span class="n">restframework</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 注册用   &#39;rest_framework&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="err">，</span><span class="n">在当前目录中创建项目</span><span class="p">,</span><span class="n">用</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">pj</span> <span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#4,创建文件夹apps/news,创建APP，一定要是目录！！！不然不识别</span>
+</span></span><span class="line"><span class="cl"><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">apps</span><span class="o">/</span><span class="n">news</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3目录结构调整">3，目录结构调整</h2>
+<p>常量</p>
+<h2 id="4settings目录">4，settings目录</h2>
+<h2 id="5-pycharm运行配置">5, pycharm运行配置</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"></code></pre></td></tr></table>
+</div>
+</div><h1 id="django的项目配置">Django的项目配置</h1>
+<h2 id="1常见app注册">1、常见APP注册，</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">INSTALLED_APPS = [
+</span></span><span class="line"><span class="cl">    # 原生
+</span></span><span class="line"><span class="cl">    &#39;django.contrib.admin&#39;,
+</span></span><span class="line"><span class="cl">    &#39;django.contrib.auth&#39;,
+</span></span><span class="line"><span class="cl">    # 三方库
+</span></span><span class="line"><span class="cl">    &#39;rest_framework&#39;,
+</span></span><span class="line"><span class="cl">    # 自己编写
+</span></span><span class="line"><span class="cl">    &#39;apps.news&#39;, 这里注意如果想直接写APP名字，需要把文件夹路径加到BASE_DIR中
+</span></span><span class="line"><span class="cl">    # 新增一个系统导包路径，可见上3，容易出现找不到APP问题
+</span></span><span class="line"><span class="cl">	# import sys
+</span></span><span class="line"><span class="cl">	# sys.path.insert(0,os.path.join(BASE_DIR,&#34;apps&#34;))
+</span></span><span class="line"><span class="cl">]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2数据库配置">2、数据库配置</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="mi">1</span><span class="err">、</span><span class="n">Django配置MySQL</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">pip</span> <span class="n">install</span> <span class="n">pymysql</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="p">,</span><span class="n">最开始创建的项目的init文件写</span><span class="err">，</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pymysql</span>
+</span></span><span class="line"><span class="cl"><span class="n">pymysql</span><span class="o">.</span><span class="n">install_as_Mysqldb</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="p">,</span><span class="n">连接属性</span>
+</span></span><span class="line"><span class="cl"><span class="err">‘</span><span class="n">default</span><span class="err">’：</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;ENGINGE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.mysql&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># &#39;ENGINE&#39;: &#39;dj_db_conn_pool.backends.mysql&#39;,连接池</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;NMAE&#39;</span><span class="p">:</span> <span class="n">数据库名字</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;USER&#39;</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="n">IP地址</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;PORT&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># 设置连接池，看情况选择</span>
+</span></span><span class="line"><span class="cl">	<span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="n">connection</span><span class="o">-</span><span class="n">pool</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;POOL_OPTIONS&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;POOL_SIZE&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>  <span class="c1"># 最小</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;MAX_OVERFLOW&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>  <span class="c1"># 在最小的基础上，还可以增加10个，即：最大20个。</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;RECYCLE&#39;</span><span class="p">:</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">,</span>  <span class="c1"># 连接可以被重复用多久，超过会重新创建，-1表示永久。</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;TIMEOUT&#39;</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="c1"># 池中没有连接最多等待的时间。</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="err">、</span><span class="n">Django配置Redis</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="mi">1</span><span class="err">、</span><span class="n">安装第三方库</span><span class="err">，</span><span class="n">Redis常用命令</span><span class="err">，</span><span class="n">都以函数的形式呈现</span><span class="err">，</span><span class="n">里面有很多参数需要自己选择填</span>
+</span></span><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">-</span><span class="n">redis</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="mi">2</span><span class="err">、</span><span class="n">settings文件配置</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 配置redis缓存</span>
+</span></span><span class="line"><span class="cl"><span class="n">CACHES</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django_redis.cache.RedisCache&#39;</span><span class="p">,</span>  <span class="c1"># 缓存后端 Redis</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 连接Redis数据库(服务器地址)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 一主带多从(可以配置多个Redis，写走第一台，读走其他的机器)</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;LOCATION&#39;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;redis://127.0.0.1:6379/0&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;KEY_PREFIX&#39;</span><span class="p">:</span> <span class="s1">&#39;lybbn&#39;</span><span class="p">,</span>  <span class="c1"># 项目名当做文件前缀</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;OPTIONS&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;CLIENT_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;django_redis.client.DefaultClient&#39;</span><span class="p">,</span>  <span class="c1"># 连接选项(默认，不改)</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;CONNECTION_POOL_KWARGS&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;max_connections&#39;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>  <span class="c1"># 连接池的连接(最大连接)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="c1">#缓存session</span>
+</span></span><span class="line"><span class="cl">           
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;verify_codes&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="c1">#缓存短信验证码</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;carts&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="c1">#登陆过的用户购物车的存储</span>
+</span></span><span class="line"><span class="cl">           
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;OPTIONS&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;CLIENT_CLASS&#34;</span><span class="p">:</span> <span class="s2">&#34;django_redis.client.DefaultClient&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;CONNECTION_POOL_KWARGS&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;decode_responses&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="c1"># 添加这一行,防止取出的值带有b&#39;&#39; bytes</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;authapi&#34;</span><span class="p">:</span> <span class="p">{</span>  <span class="c1"># 接口安全校验（验证接口重复第二次访问会拒绝）</span>
+</span></span><span class="line"><span class="cl">         
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;singletoken&#34;</span><span class="p">:</span> <span class="p">{</span>  <span class="c1"># jwt单用户登录（确保一个账户只有一个地点登录，后一个会顶掉前一个）</span>
+</span></span><span class="line"><span class="cl">           
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;OPTIONS&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;CLIENT_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;django_redis.client.DefaultClient&#39;</span><span class="p">,</span>  <span class="c1"># 连接选项(默认，不改)</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;CONNECTION_POOL_KWARGS&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;decode_responses&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="c1"># 添加这一行,防止取出的值带有b&#39;&#39; bytes</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">REDIS_TIMEOUT</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+</span></span><span class="line"><span class="cl"><span class="n">CUBES_REDIS_TIMEOUT</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+</span></span><span class="line"><span class="cl"><span class="n">NEVER_REDIS_TIMEOUT</span> <span class="o">=</span> <span class="mi">365</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">CHANNEL_LAYERS</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;BACKEND&#34;</span><span class="p">:</span> <span class="s2">&#34;channels.layers.InMemoryChannelLayer&#34;</span>  <span class="c1"># 默认用内存</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># # 配置channels_redis，windows redis运行后报错：aioredis.errors.ReplyError: ERR unknown command &#39;BZPOPMIN&#39;，请注释以下配置或升级redis到5.0及以上</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># CHANNEL_LAYERS = {</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     &#39;default&#39;: {</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         &#39;BACKEND&#39;: &#39;channels_redis.core.RedisChannelLayer&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         &#39;CONFIG&#39;: {</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#             &#34;hosts&#34;: [&#34;redis://localhost:6379/5&#34;],</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         },</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     },</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># }</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># session使用的存储方式</span>
+</span></span><span class="line"><span class="cl"><span class="n">SESSION_ENGINE</span> <span class="o">=</span> <span class="s2">&#34;django.contrib.sessions.backends.cache&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 指明使用哪一个库保存session数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">SESSION_CACHE_ALIAS</span> <span class="o">=</span> <span class="s2">&#34;session&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="mi">3</span><span class="err">、</span><span class="n">使用范例</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">django_redis</span> <span class="kn">import</span> <span class="n">get_redis_connection</span>
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="n">获取链接redis数据库</span>
+</span></span><span class="line"><span class="cl"><span class="n">redis_conn</span> <span class="o">=</span> <span class="n">get_redis_connection</span><span class="p">(</span><span class="s2">&#34;default&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="mi">4</span><span class="err">、</span><span class="n">使用事务</span><span class="err">，</span><span class="n">创建管道对象用来装载事务操作的命令</span>
+</span></span><span class="line"><span class="cl"><span class="n">事务只针对写操作</span><span class="err">，</span><span class="n">即增删改</span><span class="err">，</span><span class="n">无法控制读操作</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#创建管道</span>
+</span></span><span class="line"><span class="cl"> <span class="n">pipe</span> <span class="o">=</span> <span class="n">redis_conn</span><span class="o">.</span><span class="n">pipeline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#开启事务</span>
+</span></span><span class="line"><span class="cl"> <span class="n">pipe</span><span class="o">.</span><span class="n">multi</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#事务操作命令</span>
+</span></span><span class="line"><span class="cl"> <span class="n">pipe</span><span class="o">.</span><span class="n">hset</span><span class="p">(</span><span class="s2">&#34;cart_</span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">expire</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="n">pipe</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="s2">&#34;selected_</span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#执行事务</span>
+</span></span><span class="line"><span class="cl"> <span class="n">pipe</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#日志异常处理配置，为了保证Redis的跟进和系统同步</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3静态文件和上传文件配置">3、静态文件和上传文件配置</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1、#需要安装图片文件处理模块
+</span></span><span class="line"><span class="cl">pip install pillow
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2、#配置settings.py文件
+</span></span><span class="line"><span class="cl"># 访问静态文件的url地址前缀
+</span></span><span class="line"><span class="cl">STATIC_URL = &#39;/static/&#39;
+</span></span><span class="line"><span class="cl"># 设置django的静态文件目录
+</span></span><span class="line"><span class="cl">STATICFILES_DIRS = [
+</span></span><span class="line"><span class="cl">    os.path.join(BASE_DIR,&#34;static&#34;)
+</span></span><span class="line"><span class="cl">]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3、# 项目中存储上传文件的根目录[暂时配置]，注意，uploads目录需要手动创建否则上传文件时报错
+</span></span><span class="line"><span class="cl">MEDIA_ROOT=os.path.join(BASE_DIR,&#34;uploads&#34;)
+</span></span><span class="line"><span class="cl"># 访问上传文件的url地址前缀
+</span></span><span class="line"><span class="cl">MEDIA_URL =&#34;/media/&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4、总路由urls.py
+</span></span><span class="line"><span class="cl">#from django.urls import re_path
+</span></span><span class="line"><span class="cl">from django.conf import settings
+</span></span><span class="line"><span class="cl">from django.views.static import serve
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">urlpatterns = [
+</span></span><span class="line"><span class="cl">  	...
+</span></span><span class="line"><span class="cl">    re_path(r&#39;media/(?P&lt;path&gt;.*)&#39;, serve, {&#34;document_root&#34;: settings.MEDIA_ROOT}),
+</span></span><span class="line"><span class="cl">]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4日志配置">4、日志配置</h2>
+<h2 id="5文档配置">5、文档配置</h2>
+<h2 id="6异常配置">6、异常配置</h2>
+<h2 id="7任务队列">7、任务队列</h2>
+<p>异步和定时任务：celery+rabbitmq+Redis,可以直接嵌入项目中，也可以做可插拔的，可插拔如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 安装rabbitmq</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1，安装celery</span>
+</span></span><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">celery</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2，创建celery框架包，在根目录中</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">mycelery</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 3，包中创建配置文件和入口文件</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">mycelery</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="n">config</span><span class="o">.</span><span class="n">py</span>   <span class="n">配置</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="n">main</span><span class="o">.</span><span class="n">py</span>	   <span class="n">入口</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="n">init</span><span class="o">.</span><span class="n">py</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 4，为任务创建包，必须创建一个tasks.py作为目标文件</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">mycelery</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="n">sms</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="n">tasks</span><span class="o">.</span><span class="n">py</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="mainpy和configpy">main.py和config.py</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.py，运行过程：导包-实例-加载配置-任务对象-启动</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span> <span class="c1"># 导包</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 把celery和django进行组合，识别和加载django的配置文件</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">,</span> <span class="s1">&#39;api.settings.dev&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">django</span>
+</span></span><span class="line"><span class="cl"><span class="n">django</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;flower&#39;</span><span class="p">)</span> <span class="c1"># 创建celery主程序对象实例</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="s1">&#39;mycelery.config&#39;</span><span class="p">)</span> <span class="c1">#多种方式，文件，对象和json，这里用config文件作为加载配置项</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">autodiscpver_tasks</span><span class="p">([</span><span class="s1">&#39;mycelery.sms&#39;</span><span class="p">,])</span> <span class="c1"># 目标对象</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动，在终端中启动,windows命令要加其他的</span>
+</span></span><span class="line"><span class="cl"><span class="n">celery</span> <span class="o">-</span><span class="n">A</span> <span class="n">mycelerymain</span> <span class="n">worker</span> <span class="o">--</span><span class="n">loglevel</span><span class="o">=</span><span class="n">info</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># config.py</span>
+</span></span><span class="line"><span class="cl"><span class="n">broker_url</span> <span class="o">=</span> <span class="s1">&#39;amqp://fc:123@127.0.0.1:5672//fc_Vhost1&#39;</span> <span class="c1"># 消费队列</span>
+</span></span><span class="line"><span class="cl"><span class="n">result_backend</span> <span class="o">=</span> <span class="s1">&#39;redis://127.0.0.1:6379/14&#39;</span> <span class="c1"># 结果队列</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="taskspy">tasks.py</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># sms.tasks.py</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># celery的任务必须写在tasks.py的文件中，别的文件名称不识别!!!</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">mycelery.main</span> <span class="kn">import</span> <span class="n">app</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.task</span>  <span class="c1"># name表示设置任务的名称，如果不填写，则默认使用函数名做为任务名</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_sms</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;发送短信!!!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sms&#39;</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_sms2</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;发送短信任务2!!!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 调用</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">mycelery.sms.tasks</span> <span class="kn">import</span> <span class="n">send_sms</span>
+</span></span><span class="line"><span class="cl"><span class="n">send_sms</span><span class="o">.</span><span class="n">delay</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加日志</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 日志是Python提供的</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;django&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="8定时任务">8、定时任务</h2>
+<p>用celery或者自带Django-crontab</p>
+<h1 id="django项目api接口创建">Django项目API接口创建</h1>
+<h2 id="1创建app">1、创建APP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python manage.py startapp name或者
+</span></span><span class="line"><span class="cl">django-admin startapp name apps/name
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2app注册">2、APP注册</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">settings.py文件
+</span></span><span class="line"><span class="cl">INSTALLAPP = [
+</span></span><span class="line"><span class="cl">&#39;name&#39; 或者 &#39;apps/name&#39;
+</span></span><span class="line"><span class="cl">]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3模型models创建迁移">3、模型models创建/迁移</h2>
+<ul>
+<li>models.py</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-导Django自带模型包
+</span></span><span class="line"><span class="cl">from django.db import models
+</span></span><span class="line"><span class="cl">-声明模型表数据类
+</span></span><span class="line"><span class="cl">class Flower(models.model)  # 命名用单词
+</span></span><span class="line"><span class="cl">-字段名 = 字段类型（字段约束）
+</span></span><span class="line"><span class="cl">name = models.charField(max_length= , verbose_name=)
+</span></span><span class="line"><span class="cl">-外键/表关系
+</span></span><span class="line"><span class="cl">name = models.ForeignKey(to=&#34;Dictionary&#34;, db_constraint=False, on_delete=models.PROTECT, blank=True, null=True,verbose_name=&#34;父级&#34;, help_text=&#34;父级&#34;)
+</span></span><span class="line"><span class="cl">-自定义函数
+</span></span><span class="line"><span class="cl">def __str__():
+</span></span><span class="line"><span class="cl">	return self.title
+</span></span><span class="line"><span class="cl">-class meta、表信息声明
+</span></span><span class="line"><span class="cl">class_Meta:
+</span></span><span class="line"><span class="cl">	verbose_name = 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>迁移</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python manage.py makemigrations
+</span></span><span class="line"><span class="cl">python manage.py migrate
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>常用选项</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-数值型
+</span></span><span class="line"><span class="cl">AutoField	主键自增 int(11)
+</span></span><span class="line"><span class="cl">IntegerField	有符号整数 int(11)
+</span></span><span class="line"><span class="cl">PostiveIntegerField	正整数 init(11)
+</span></span><span class="line"><span class="cl">SmallInteterField	整数 smallint
+</span></span><span class="line"><span class="cl">DecimalField	定点数 decimal
+</span></span><span class="line"><span class="cl">　　max_digits：总位数，decimal_places：小数位
+</span></span><span class="line"><span class="cl">BooleanField	布尔 tinyint(1)
+</span></span><span class="line"><span class="cl">-字符型
+</span></span><span class="line"><span class="cl">CharField	varchar
+</span></span><span class="line"><span class="cl">　　max_length：最大长度
+</span></span><span class="line"><span class="cl">TextField	大文本longtext
+</span></span><span class="line"><span class="cl">URLField	字符串 *********
+</span></span><span class="line"><span class="cl">UUIDField	char(32)
+</span></span><span class="line"><span class="cl">EmailField	email
+</span></span><span class="line"><span class="cl">FileField	文件
+</span></span><span class="line"><span class="cl">ImageField	图片
+</span></span><span class="line"><span class="cl">-日期类型
+</span></span><span class="line"><span class="cl">字段	说明
+</span></span><span class="line"><span class="cl">DateField	date
+</span></span><span class="line"><span class="cl">DateTimeField	datetime
+</span></span><span class="line"><span class="cl">TimeField	time
+</span></span><span class="line"><span class="cl">-关系类型
+</span></span><span class="line"><span class="cl">ForeignKey	多对一
+</span></span><span class="line"><span class="cl">OneToOneField	一对一
+</span></span><span class="line"><span class="cl">ManyToManyField	多对多
+</span></span><span class="line"><span class="cl">    through
+</span></span><span class="line"><span class="cl">    on_delete
+</span></span><span class="line"><span class="cl">    	CASCADE:这就是默认的选项，级联删除，你无需显性指定它。
+</span></span><span class="line"><span class="cl">    	models.DO_NOTHING
+</span></span><span class="line"><span class="cl">		PROTECT: 保护模式，如果采用该选项，删除的时候，会抛出ProtectedError错误。
+</span></span><span class="line"><span class="cl">		SET_NULL: 置空模式，删除的时候，外键字段被设置为空，前提就是blank=True, null=True,定义该字段的时候，允许为空。
+</span></span><span class="line"><span class="cl">		SET_DEFAULT: 置默认值，删除的时候，外键字段设置为默认值，所以定义外键的时候注意加上一个默认值。
+</span></span><span class="line"><span class="cl">		SET(): 自定义一个值，该值当然只能是对应的实体了
+</span></span><span class="line"><span class="cl">    related_name
+</span></span><span class="line"><span class="cl">    to: 利用orm自动创建第三张关系表
+</span></span><span class="line"><span class="cl">    db_constraint
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2 字段约束
+</span></span><span class="line"><span class="cl">2.1 表内约束
+</span></span><span class="line"><span class="cl">db_index	建立索引
+</span></span><span class="line"><span class="cl">db_column	字段名
+</span></span><span class="line"><span class="cl">primary_key	主键
+</span></span><span class="line"><span class="cl">null	表内为空
+</span></span><span class="line"><span class="cl">unique	唯一
+</span></span><span class="line"><span class="cl">unique_for_date	日期唯一
+</span></span><span class="line"><span class="cl">unique_for_year	年份唯一
+</span></span><span class="line"><span class="cl">unique_for_month	月份唯一
+</span></span><span class="line"><span class="cl">default	默认值
+</span></span><span class="line"><span class="cl">required 必填项
+</span></span><span class="line"><span class="cl">2.2 业务层约束
+</span></span><span class="line"><span class="cl">blank	提交可以为空
+</span></span><span class="line"><span class="cl">chioces	选项
+</span></span><span class="line"><span class="cl">editable	是否可编辑
+</span></span><span class="line"><span class="cl">verbose_name	业务层展示名字
+</span></span><span class="line"><span class="cl">error_message	验证失败的异常提示
+</span></span><span class="line"><span class="cl">validators	自定义检验
+</span></span><span class="line"><span class="cl">help_text	字段提示语
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="classmeta">classmeta</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-classmeta:
+</span></span><span class="line"><span class="cl">使用内部meta类 来给模型赋予元数据，所谓模型的元数据即“所有不是字段的东西”，比如培训选项（ordering）,数据库表名（db_table），或是阅读友好的单复数名（verbose_name和verbose_name_plural）。这些都不是必须的，并且在模型当中添加meta类也完全是可选的
+</span></span><span class="line"><span class="cl">-自定义方法：
+</span></span><span class="line"><span class="cl">在模型中添加自定义方法会给你的对象提供自定义的“行级”操作能力。与之对应的是类manager的方法意在提供“表级”的操作，模型方法应该在某个对象实例上生效。这是一个将相关逻辑代码放在一个地方的技巧--模型。
+</span></span><span class="line"><span class="cl">*__ str__():返回值展示了一个对象。Python和Django在要将模型实例展示为纯文本时调用。最有可能的应用场景是交互式控制台或后台，你将会经常定义此方法；默认提供的不是很好用
+</span></span><span class="line"><span class="cl">*get_absolute_url():该方法告诉Django如何甲酸一个对象的URL，Django在后台接口使用此方法，或任意时间它需要计算一个对象的URL。任何需要一个唯一URL的对象需要定义此方法
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4后台admin集成">4、后台admin集成</h2>
+<p>当前APP/apps.py</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">admin.site.register(模型名)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5序列化器serializer编写">5、序列化器serializer编写</h2>
+<p>serializers.py</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-导DRF序列化器包
+</span></span><span class="line"><span class="cl">from rest_framework import serializers
+</span></span><span class="line"><span class="cl">-导入模型表
+</span></span><span class="line"><span class="cl">from .models import name
+</span></span><span class="line"><span class="cl">-声明序列化器类名（继承）
+</span></span><span class="line"><span class="cl">class nameModelSerializer(serializers.ModelSerializer):
+</span></span><span class="line"><span class="cl">    &#34;&#34;&#34;
+</span></span><span class="line"><span class="cl">    name序列化器
+</span></span><span class="line"><span class="cl">    &#34;&#34;&#34;
+</span></span><span class="line"><span class="cl">    class Meta:
+</span></span><span class="line"><span class="cl">        model = name
+</span></span><span class="line"><span class="cl">        fields = [&#34;id&#34;,&#34;name&#34;]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>常用选项</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"></code></pre></td></tr></table>
+</div>
+</div><h2 id="6视图view">6、视图view</h2>
+<p>view.py、！！！<strong>使用切片可以不激活queryset的缓存机制，一旦使用迭代循环，则会启用queryset缓存</strong>！！！或者使用models.objects.func()，而不是使用queryset</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-导DRF视图包
+</span></span><span class="line"><span class="cl">from rest_framework.generics import ListAPIView
+</span></span><span class="line"><span class="cl">-导入模型类
+</span></span><span class="line"><span class="cl">from .models import CourseCategory
+</span></span><span class="line"><span class="cl">-导入序列化器类
+</span></span><span class="line"><span class="cl">from .serializers import CourseCategoryModelSerializer
+</span></span><span class="line"><span class="cl">-声明视图类名（继承）
+</span></span><span class="line"><span class="cl">class CourseListAPIView(ListAPIView):
+</span></span><span class="line"><span class="cl">-queryset对象和条件
+</span></span><span class="line"><span class="cl">	queryset = Course.objects.filter(is_show=True, is_deleted=False).order_by(&#34;orders&#34;,&#34;-id&#34;)
+</span></span><span class="line"><span class="cl">-序列化器
+</span></span><span class="line"><span class="cl">    serializer_class = CourseModelSerializer
+</span></span><span class="line"><span class="cl">-附加条件
+</span></span><span class="line"><span class="cl">    filter_backends = [DjangoFilterBackend, OrderingFilter]
+</span></span><span class="line"><span class="cl">    filter_fields = [&#39;course_category&#39;]
+</span></span><span class="line"><span class="cl">    ordering_fields = (&#39;id&#39;, &#39;students&#39;, &#39;price&#39;)
+</span></span><span class="line"><span class="cl">    pagination_class = CoursePageNumberPagination
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>常用选项</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-视图包GenericAPIView
+</span></span><span class="line"><span class="cl">##  GenericAPIView的视图子类
+</span></span><span class="line"><span class="cl">（1）CreateAPIView
+</span></span><span class="line"><span class="cl">提供了post方法，内部调用了create方法
+</span></span><span class="line"><span class="cl">继承自： GenericAPIView、CreateModelMixin
+</span></span><span class="line"><span class="cl">#### （2）ListAPIView
+</span></span><span class="line"><span class="cl">提供了get方法，内部调用了list方法
+</span></span><span class="line"><span class="cl">继承自：GenericAPIView、ListModelMixin
+</span></span><span class="line"><span class="cl">#### （3）RetrieveAPIView
+</span></span><span class="line"><span class="cl">提供了get方法，内部调用了retrieve方法
+</span></span><span class="line"><span class="cl">继承自: GenericAPIView、RetrieveModelMixin
+</span></span><span class="line"><span class="cl">#### （4）DestoryAPIView
+</span></span><span class="line"><span class="cl">提供了delete方法，内部调用了destory方法
+</span></span><span class="line"><span class="cl">继承自：GenericAPIView、DestoryModelMixin
+</span></span><span class="line"><span class="cl">#### （5）UpdateAPIView
+</span></span><span class="line"><span class="cl">提供了put和patch方法，内部调用了update和partial_update方法
+</span></span><span class="line"><span class="cl">继承自：GenericAPIView、UpdateModelMixin
+</span></span><span class="line"><span class="cl">#### （6）ListCreateAPIView
+</span></span><span class="line"><span class="cl">提供了get和post方法，内部调用了list和create方法
+</span></span><span class="line"><span class="cl">继承自：GenericAPIView、ListModelMixin、CreateModelMixin
+</span></span><span class="line"><span class="cl">#### （7）RetrieveUpdateAPIView
+</span></span><span class="line"><span class="cl">提供 get、put、patch方法
+</span></span><span class="line"><span class="cl">继承自： GenericAPIView、RetrieveModelMixin、UpdateModelMixin
+</span></span><span class="line"><span class="cl">#### （8）RetrieveDestoryAPIView
+</span></span><span class="line"><span class="cl">提供 get、delete方法
+</span></span><span class="line"><span class="cl">继承自：GenericAPIView、RetrieveModelMixin、DestoryModelMixin
+</span></span><span class="line"><span class="cl">#### （9）RetrieveUpdateDestoryAPIView
+</span></span><span class="line"><span class="cl">提供 get、put、patch、delete方法
+</span></span><span class="line"><span class="cl">继承自：GenericAPIView、RetrieveModelMixin、UpdateModelMixin、DestoryModelMixin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-queryset条件
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3.1 链式调用接口
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">all()	查询所有
+</span></span><span class="line"><span class="cl">filter(条件)	按条件查询
+</span></span><span class="line"><span class="cl">exclude(条件)	查询不满足条件的
+</span></span><span class="line"><span class="cl">reverse()	把QuerySet结果倒叙排列
+</span></span><span class="line"><span class="cl">distinct()	去重
+</span></span><span class="line"><span class="cl">none	返回空的QuerySet
+</span></span><span class="line"><span class="cl">3.2 非链式调用接口
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">get	返回满足条件的唯一结果，多或没有满足都报异常
+</span></span><span class="line"><span class="cl">create	写入数据库并创建对象
+</span></span><span class="line"><span class="cl">get_or_create	没有get到就create
+</span></span><span class="line"><span class="cl">update_or_create	没有update到就create
+</span></span><span class="line"><span class="cl">count	QuerySet的结果数量
+</span></span><span class="line"><span class="cl">latest	最新的一条记录
+</span></span><span class="line"><span class="cl">　　必填字段：field_name，按字段排序的最新一条
+</span></span><span class="line"><span class="cl">earliest	最早的一条记录
+</span></span><span class="line"><span class="cl">　　必填字段：field_name，按字段排序的最早一条
+</span></span><span class="line"><span class="cl">first	QuerySet第一条
+</span></span><span class="line"><span class="cl">last	QeurySet最后一条
+</span></span><span class="line"><span class="cl">exists	是否存在
+</span></span><span class="line"><span class="cl">bulk_create	多条创建，返回list
+</span></span><span class="line"><span class="cl">in_bulk	批量查询
+</span></span><span class="line"><span class="cl">update	更新
+</span></span><span class="line"><span class="cl">delete	删除
+</span></span><span class="line"><span class="cl">values	返回字段值
+</span></span><span class="line"><span class="cl">values_list	返回tuple的QuerySet
+</span></span><span class="line"><span class="cl">比如：
+</span></span><span class="line"><span class="cl"># 多条创建
+</span></span><span class="line"><span class="cl">user_s = User.objects.bulk_create([User(name=&#39;name%s&#39; % i) for i in range(10)])
+</span></span><span class="line"><span class="cl"># User中最新的一条
+</span></span><span class="line"><span class="cl">user_latest = User.objects.latest(field_name=&#39;id&#39;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3.3 进阶接口
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">defer	需要的字段延时加载
+</span></span><span class="line"><span class="cl">only	只加载指定字段
+</span></span><span class="line"><span class="cl">select_related	多对一查询，只能从多中查一，不能一中查多
+</span></span><span class="line"><span class="cl">prefetch_related	多对多关联查询
+</span></span><span class="line"><span class="cl">比如：
+</span></span><span class="line"><span class="cl">博客懒加载内容
+</span></span><span class="line"><span class="cl"># 懒加载name
+</span></span><span class="line"><span class="cl">topic_s = Topic.objects.all().defer(&#39;name&#39;)
+</span></span><span class="line"><span class="cl"># 多对一查询关联sender，避免N+1次查询
+</span></span><span class="line"><span class="cl">topic_s = Topic.objects.all().select_related(&#39;sender&#39;)
+</span></span><span class="line"><span class="cl"># 多对多关联collectors，避免N+1次查询
+</span></span><span class="line"><span class="cl">topic_s = Topic.objects.all().prefetch_related(&#39;collectors&#39;)
+</span></span><span class="line"><span class="cl">only案例同defer
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3.4 字段查询
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">contains	包含
+</span></span><span class="line"><span class="cl">icontains	包含、忽略大小写
+</span></span><span class="line"><span class="cl">exact	相等
+</span></span><span class="line"><span class="cl">iexact	相等、忽略大小写
+</span></span><span class="line"><span class="cl">in	范围查询
+</span></span><span class="line"><span class="cl">gt	大于
+</span></span><span class="line"><span class="cl">gte	大于等于
+</span></span><span class="line"><span class="cl">lt	小于
+</span></span><span class="line"><span class="cl">lte	小于等于
+</span></span><span class="line"><span class="cl">startwith	开头
+</span></span><span class="line"><span class="cl">istartwith	开头、忽略大小
+</span></span><span class="line"><span class="cl">endswith	结尾
+</span></span><span class="line"><span class="cl">iendswith	结尾、忽略大小
+</span></span><span class="line"><span class="cl">range	范围查询
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3.5 进阶查询
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">F	表内字段比较
+</span></span><span class="line"><span class="cl">Q	逻辑比较
+</span></span><span class="line"><span class="cl">Count	个数
+</span></span><span class="line"><span class="cl">Sum	求和
+</span></span><span class="line"><span class="cl">比如：
+</span></span><span class="line"><span class="cl">User.objects.get(id=Count(&#39;user&#39;)
+</span></span><span class="line"><span class="cl">User.objects.get(id=Sum(&#39;money&#39;))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="orm对应的mysql操作">orm对应的MySQL操作</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"></code></pre></td></tr></table>
+</div>
+</div><h3 id="django-redis对应redis中操作">django-redis对应Redis中操作</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># string</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1,redis连接操作,用的是Redis生core接口</span>
+</span></span><span class="line"><span class="cl"><span class="n">redis_conn</span> <span class="o">=</span> <span class="n">get_redis_connection</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">redis_conn</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">ex</span><span class="o">=</span><span class="n">秒</span><span class="p">,</span> <span class="n">px</span><span class="o">=</span><span class="n">毫秒</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="n">键不存在</span><span class="p">,</span> <span class="n">xx</span><span class="o">=</span><span class="n">键存在</span><span class="p">,</span> <span class="n">keepttl</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">exat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pxat</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">mset</span>
+</span></span><span class="line"><span class="cl"><span class="n">mget</span>
+</span></span><span class="line"><span class="cl"><span class="n">setex</span>
+</span></span><span class="line"><span class="cl"><span class="n">setnx</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2,缓存操作，用的是django-redis提供的RedisCache接口，其继承于Django的basecache</span>
+</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="o">/</span><span class="n">pickle</span>
+</span></span><span class="line"><span class="cl"><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">get</span><span class="p">())</span><span class="o">/</span><span class="n">pickle</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">has_key</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_or_set</span>
+</span></span><span class="line"><span class="cl"><span class="n">set_many</span><span class="p">({})</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_many</span><span class="p">([])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span>
+</span></span><span class="line"><span class="cl"><span class="n">incr_version</span>
+</span></span><span class="line"><span class="cl"><span class="n">add</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span>
+</span></span><span class="line"><span class="cl"><span class="n">delete</span>
+</span></span><span class="line"><span class="cl"><span class="n">delete_pattern</span>
+</span></span><span class="line"><span class="cl"><span class="n">delete_many</span>
+</span></span><span class="line"><span class="cl"><span class="n">clear</span>
+</span></span><span class="line"><span class="cl"><span class="n">incr</span>
+</span></span><span class="line"><span class="cl"><span class="n">decr</span>
+</span></span><span class="line"><span class="cl"><span class="n">has_key</span>
+</span></span><span class="line"><span class="cl"><span class="n">keys</span>
+</span></span><span class="line"><span class="cl"><span class="n">iter_keys</span>
+</span></span><span class="line"><span class="cl"><span class="n">ttl</span>
+</span></span><span class="line"><span class="cl"><span class="n">pttl</span>
+</span></span><span class="line"><span class="cl"><span class="n">persist</span>
+</span></span><span class="line"><span class="cl"><span class="n">expire</span>
+</span></span><span class="line"><span class="cl"><span class="n">pexpire_at</span>
+</span></span><span class="line"><span class="cl"><span class="n">lock</span>
+</span></span><span class="line"><span class="cl"><span class="n">close</span>
+</span></span><span class="line"><span class="cl"><span class="n">touch</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># list</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># hash</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># set</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># zset</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7路由urls子路由总路由">7、路由urls、子路由——&gt;总路由</h2>
+<p>当前app/urls.py</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-导Django自带URL包中的path和re_path
+</span></span><span class="line"><span class="cl">from django.urls import path,re_path
+</span></span><span class="line"><span class="cl">-导入视图类
+</span></span><span class="line"><span class="cl">from . import views
+</span></span><span class="line"><span class="cl">-urlpattrns=[]列表
+</span></span><span class="line"><span class="cl">urlpatterns = [
+</span></span><span class="line"><span class="cl">    path(r&#34;category/&#34;, views.CourseCategoryListAPIView.as_view() ),
+</span></span><span class="line"><span class="cl">    path(r&#34;&#34;, views.CourseListAPIView.as_view() ),
+</span></span><span class="line"><span class="cl">    re_path(r&#34;(?P&lt;pk&gt;\d+)/&#34;, views.CourseRetrieveAPIView.as_view()),
+</span></span><span class="line"><span class="cl">    path(r&#34;chapter/&#34;, views.CourseChapterListAPIView.as_view()),
+</span></span><span class="line"><span class="cl">]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当前项目/urls.py</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-按需添加内容
+</span></span><span class="line"><span class="cl">urlpatterns = [
+</span></span><span class="line"><span class="cl">    re_path(r&#39;media/(?P&lt;path&gt;.*)&#39;, serve, {&#34;document_root&#34;: settings.MEDIA_ROOT}),
+</span></span><span class="line"><span class="cl">    path(r&#39;^ckeditor/&#39;, include(&#39;ckeditor_uploader.urls&#39;)),
+</span></span><span class="line"><span class="cl">    path(&#39;&#39;, include(&#39;home.urls&#39;)),
+</span></span><span class="line"><span class="cl">    path(&#39;user/&#39;, include(&#39;user.urls&#39;)),
+</span></span><span class="line"><span class="cl">]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>常用选项</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"></code></pre></td></tr></table>
+</div>
+</div><h1 id="django三方组件库和插件">Django三方组件库和插件</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    Django-allauth - 用户注册登录管理
+</span></span><span class="line"><span class="cl">    官网地址：https://django-allauth.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-haystack - 全文检索引擎
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-haystack.readthedocs.io/en/master/
+</span></span><span class="line"><span class="cl">    全文检索不同于标题的简单匹配，是一件技术难度比较高的活。当文章很长时，很难找到精确的匹配，同时搜索全文需要消耗大量的计算资源。有了haystack，在django中直接添加搜索功能，像搜索标题一样搜索全文，而无需关注索引建立、搜索解析等技术问题。haystack支持多种搜索引擎，不仅仅是whoosh，使用solr、elasticsearch等搜索，也可通过haystack，而且直接切换引擎即可，甚至无需修改搜索代码。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-ckeditor - 富文本编辑器
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-ckeditor.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    django没有提供官方的富文本编辑器，而ckeditor恰好是内容型网站后台管理中不可或缺的控件。ckeditor是一款基于javascript，使用非常广泛的开源网页编辑器。它允许用户直接编写图文，插入列表和表格，并支持文本和HTML格式代码输入。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-imagekit - 自动化处理图像
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-imagekit.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    现代网站开发一般免不了处理一些图片，例如头像、用户上传的图片等内容。django-imagekit 帮配合 django 的 model 模块自动完成图片的裁剪、压缩、生成缩略图、加水印等一系列图片相关的操作。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-debug-toolbar - django项目调试利器
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-debug-toolbar.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    该工具给django web开发提供了强大的调试功能，包括查看执行的sql语句，db查询次数，request，headers，调试概览等。通过安装插件Pympler，还可以了解内存使用情况。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-celery - 执行异步任务或定时任务的最佳选择
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：http://docs.celeryproject.org/en/latest/django/index.html
+</span></span><span class="line"><span class="cl">    https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html
+</span></span><span class="line"><span class="cl">    Celery 是一款非常简单、灵活、可靠的分布式系统，可用于处理大量消息，并且提供了一整套操作此系统的一系列工具。另外，Celery 是一款消息队列工具，可用于处理实时数据以及任务调度。官网给出了 Celery 如下四个特点：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    • 简单：开箱机用，维护简单，不需要使用配置文件；
+</span></span><span class="line"><span class="cl">    • 高可靠性：如果连接丢失或者出现故障，客户端进程会自动重试。一些 broker 会以主/主或者主/备的方式维持系统的高可靠性；
+</span></span><span class="line"><span class="cl">    • 快速：单个 Celery 进程每分钟内可以处理数百万个任务，往返的延迟在毫秒级别(使用RabbitMQ 做中间件，再加上一些优化的设置)；
+</span></span><span class="line"><span class="cl">    • 灵活：几乎 Celery 的每个部分都可以自行扩展，如使用自定义池、序列化器，压缩方案、日志记录，调度程序，消费者，生产者，代理传输等等。
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    注意到基于 Django 框架构建的 Web 系统实际上是一个同步服务。这意味着当客户端发起一个请求时，后端只有在视图函数处理完后才会返回结果。如果这个请求背后要做的工作比较耗时，或者因为某种原因导致非常耗时，那么此时客户端会一直等待请求的响应，这非常影响用户体验。对于一个优秀的网站而言，良好的用户体验十分重要，这也说明了一个支持异步功能的第三方插件的重要性。为了能让 Django 搭建的 Web 系统支持这样的异步功能，于是 django-celery 便应运而生。django-celery项目之后也被移到 celery 下进行统一管理。
+</span></span><span class="line"><span class="cl">    django-celery是django web开发中执行异步任务或定时任务的最佳选择。它的应用场景包括:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    * 异步任务: 当用户触发一个动作需要较长时间来执行完成时，可以把它作为任务交给celery异步执行，执行完再返回给用户。这点和在前端使用ajax实现异步加载有异曲同工之妙。
+</span></span><span class="line"><span class="cl">    * 定时任务。假设有多台服务器，多个任务，定时任务的管理是很困难的，要在不同电脑上写不同的crontab，而且还不好管理。Celery可以帮助快速在不同的机器设定不同任务。
+</span></span><span class="line"><span class="cl">    * 其他可以异步执行的任务。比如发送短信，邮件，推送消息，清理/设置缓存等。这点还是比较有用的。
+</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">    Django-constance - 常量管理
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-constance.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    有时会在 django 的 settings 中设置一些常量，但是有可能会进行变更。利用这个包，只需简单的配置就可以自动生成 admin 管理后台可以修改管理常量。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-filter - 过滤数据使用
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-filter.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    Django-filter允许用户模型字段进一步过滤从数据库查得到的queryset，从而筛选显示用户想要的查询结果，这样避免了对数据库的再次查询，大大提升了效率。比如用户访问文章列表页面，已经看到了文章清单，但用户还希望通过标题关键词进一步在查询结果中筛选出自己感兴趣的文章清单(而不必重新查询数据库)，这时使用Django-filter就可以轻松帮实现上述需求。
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    Django-guardian
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-guardian.readthedocs.io/en/stable/index.html
+</span></span><span class="line"><span class="cl">    在介绍Django权限管理时，提到过Django没有提供对象（Object）级别的权限控制。一个用户如果对Article模型有修改的权限，那么他将对所有Article对象有修改权限。使用django-guardian可以帮助实现对对象级别（比如某篇具体文章）的权限控制。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-activity-stream
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/justquick/django-activity-stream
+</span></span><span class="line"><span class="cl">    Django-activity-stream是一个Django应用程序，用于记录和显示活动流，例如用户活动、社交事件和系统通知。它可以帮助开发人员更好地跟踪和展示应用程序中的活动。
+</span></span><span class="line"><span class="cl">    如果要开发一个社交类网站，需要实现用户关注、收藏、点赞、用户动态等功能时，这个第三方库可以快速帮实现并提供用户的活动流。出于学习目的话，该项目的源码也是一个很好的学习对象。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-pure-pagination
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/jamespacileo/django-pure-pagination
+</span></span><span class="line"><span class="cl">    Django虽然自带强大分页给功能，但当页数非常多时显示结果对用户并不友好。比如有1000页，那么1到1000每个数字都会出现页面上。使用django-pure-pagination则可以快速实现如下按范围展示的完美分页方式，值得一试。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-rules
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/dfunckt/django-rules
+</span></span><span class="line"><span class="cl">    Django-rules是一个Django应用程序，用于定义简单的规则系统，在运行时根据这些规则授权、限制或过滤用户行为。它可以帮助开发人员更轻松地实现复杂的授权和权限管理。
+</span></span><span class="line"><span class="cl">    一个小巧但是强大的应用，提供对象级别的权限管理，且不需要使用数据库。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    django-import-export
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-import-export.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    django-import-export是一个Django应用程序，用于导入和导出数据到和从多种格式，例如CSV、JSON、Excel等。它可以帮助开发人员更方便地管理数据导入和导出。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    django-watchman
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-watchman.readthedocs.io/en/stable/
+</span></span><span class="line"><span class="cl">    django-watchman是一个Django应用程序，用于监控Django应用程序运行状况、数据库连接、缓存、文件改变等。它可以帮助开发人员更实时地监测应用程序的状态。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    django-redis
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/jazzband/django-redis
+</span></span><span class="line"><span class="cl">    django-redis是一个Django应用程序，用于管理Redis数据库连接和缓存。它可以帮助开发人员更高效地处理Redis缓存和数据存储。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    django-cors-headers
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/ottoyiu/django-cors-headers
+</span></span><span class="line"><span class="cl">    django-cors-headers是一个Django应用程序，用于跨域资源共享，过滤cors。它可以帮助开发人员更轻松地处理跨域请求和响应。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    pymysql - 连接mysql数据库
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/PyMySQL/PyMySQL
+</span></span><span class="line"><span class="cl">    pymysql是Python的一个MySQL数据库接口，可以帮助开发人员更方便地连接和操作MySQL数据库。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-simpleui
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/newpanjing/simpleui
+</span></span><span class="line"><span class="cl">    Django-simpleui是一个Django的扩展，提供了基于Bootstrap的后台模板和界面组件。它可以帮助开发人员更快速地创建美观的后台管理界面。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-elasticsearch-dsl
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-elasticsearch-dsl.readthedocs.io/en/latest/index.html
+</span></span><span class="line"><span class="cl">    Django-elasticsearch-dsl是一个Django应用程序，用于更方便地与Elasticsearch搜索引擎集成。它可以帮助开发人员更轻松地处理搜索和过滤逻辑。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-prometheus
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/korfuri/django-prometheus
+</span></span><span class="line"><span class="cl">    Django-prometheus是一个Django应用程序，用于与Prometheus监控系统集成，提供更好的应用程序性能和运行状态监控。它可以帮助开发人员更实时地监测和处理应用程序运行状况。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Django-bulk-update
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://github.com/aykut/django-bulk-update
+</span></span><span class="line"><span class="cl">    Django-bulk-update是一个Django应用程序，用于更高效地批量更新Django模型。它可以帮助开发人员更快速地更新和处理模型数据。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    restful-Api使用
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址 https://restfulapi.net/
+</span></span><span class="line"><span class="cl">    restful-Api是一种设计和开发Web API的方式，是一种基于HTTP协议的、符合RESTful风格的Web API，可以用于前后端分离的Web开发，通过对资源的描述和HTTP动词的定义，实现对客户端的请求和响应。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    grpcio - rpc通信的第三方库
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://grpc.io/
+</span></span><span class="line"><span class="cl">    grpcio是一个通用的、高性能的RPC框架，基于Google开发的gRPC协议，支持多种编程语言和平台，在分布式系统中应用广泛。其主要作用是简化服务之间的通信，提高效率和可维护性。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    simplejwt - 用于登录认证的权限
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    simplejwt是对Django REST framework的一个插件，用于提供基于JSON Web Tokens (JWT)的认证系统，可以用于开发安全的RESTful API服务。
+</span></span><span class="line"><span class="cl">    具体使用参考：7、DRF实战总结：JWT认证原理和使用及第三方库simplejwt 的详解（附源码）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    drf-yasg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://drf-yasg.readthedocs.io/en/stable/
+</span></span><span class="line"><span class="cl">    drf-yasg是一个为Django REST framework设计的OpenAPI文档生成工具，可以自动生成API文档，提供Swagger UI和Redoc两种风格的API文档展示方式。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    django-extensions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://django-extensions.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    django-extensions是一个Django扩展模块，可以提供一些工具和命令，方便开发者进行Django应用的开发和调试，包括但不限于Shell命令增强、数据库命令简化、代码检查等。
+</span></span><span class="line"><span class="cl">    具体使用参考：七、Django进阶：第三方库Django-extensions的开发使用技巧详解（附源码）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    drf-extensions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    官网地址：https://drf-extensions.readthedocs.io/en/latest/
+</span></span><span class="line"><span class="cl">    drf-extensions是对Django REST framework的一个扩展，提供了一系列常用的、易用的DRF功能增强，包括但不限于缓存、过滤、排序、搜索等。这些增强能够降低开发难度，提高WebAPI性能和可用性。
+</span></span><span class="line"><span class="cl">   
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="django项目常见错误">Django项目常见错误</h1>
+<p>1，drf-yasg安装失败</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">换源，可能安装错误的版本
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、Redis数据错误</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#redis以字符串形式存储，并且是byte字节的，</span>
+</span></span><span class="line"><span class="cl"><span class="sa">b</span><span class="s1">&#39;18184&#39;</span><span class="p">,</span><span class="n">需要转码decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Redis连接时，get或者set超时，</span>
+</span></span><span class="line"><span class="cl"><span class="n">把localHost改为127</span><span class="mf">.0.0.1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># redis新建的连接，读取Django的cache缓存时，出现乱码</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;utf-8&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0x80 in position 0: invalid start byte</span>
+</span></span><span class="line"><span class="cl"><span class="n">可以用decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="n">来实现读取</span><span class="err">，</span><span class="n">但是转码后多加了一个点</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3、celery问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#windows中运行celery命令,不然会出现只监测和接受任务而不执行</span>
+</span></span><span class="line"><span class="cl"><span class="n">celery</span> <span class="o">-</span><span class="n">A</span> <span class="n">mycelery</span><span class="o">.</span><span class="n">main</span> <span class="n">worker</span> <span class="o">--</span><span class="n">concurrency</span><span class="o">=</span><span class="mi">4</span> <span class="o">--</span><span class="n">pool</span><span class="o">=</span><span class="n">solo</span> <span class="o">--</span><span class="n">loglevel</span><span class="o">=</span><span class="n">info</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 或者使用gevent参数，协程操作容易阻塞注意！！</span>
+</span></span><span class="line"><span class="cl"><span class="n">celery</span> <span class="o">-</span><span class="n">A</span> <span class="n">celery_tasks</span><span class="o">.</span><span class="n">main</span> <span class="n">worker</span> <span class="o">-</span><span class="n">l</span> <span class="n">info</span> <span class="o">-</span><span class="n">P</span> <span class="n">gevent</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>4、Django项目结构问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 一定是先创建目录，目录，目录！！！不然迁移容易失败</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>5、Django接口问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># AssertionError: Negative indexing is not supported</span>
+</span></span><span class="line"><span class="cl"><span class="n">中文</span><span class="err">：</span><span class="n">不支持负索引</span><span class="err">，</span><span class="n">在列表长度不足时会报此错</span><span class="err">，</span><span class="n">可以用</span><span class="p">[</span><span class="mi">0</span><span class="p">:]</span><span class="n">代替</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># TypeError: &#39;int&#39; object is not subscriptable</span>
+</span></span><span class="line"><span class="cl"><span class="n">中文</span><span class="err">：</span><span class="n">int有下标</span><span class="err">，</span><span class="n">通常是重复定义变量</span><span class="err">，</span><span class="n">出现</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-06-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" data-title="基于Vue.js&#43;Django的web项目 Django项目创建"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" data-title="基于Vue.js&#43;Django的web项目 Django项目创建"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" data-title="基于Vue.js&#43;Django的web项目 Django项目创建"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/" data-title="基于Vue.js&#43;Django的web项目 Django项目创建"><i data-svg-src="/lib/simple-icons/icons/baidu.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="prev" rel="prev" title="Python数据分析"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Python数据分析</a>
+            <a href="/%E4%BB%8Eweb3%E5%88%B0%E5%85%83%E5%AE%87%E5%AE%99/" class="next" rel="next" title="从web3到元宇宙">从web3到元宇宙<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">去哪里寻找大腿</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

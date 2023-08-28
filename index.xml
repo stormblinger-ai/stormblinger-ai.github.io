@@ -1,165 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>show me the f**k code</title>
-    <link>https://stormblinger-ai.github.io/</link>
-    <description>Recent content on show me the f**k code</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 25 Aug 2023 13:42:41 +0800</lastBuildDate><atom:link href="https://stormblinger-ai.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Read</title>
-      <link>https://stormblinger-ai.github.io/posts/read/</link>
-      <pubDate>Fri, 25 Aug 2023 13:42:41 +0800</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/read/</guid>
-      <description>Tale-roads 个人学习
-计算机基础 操作系统 计算机网络 计算机组成原理 计算机编译原理 Linux 编程开发 Python C++ JavaScript Django 数据库相关 MySQL Redis Elasticsearch 算法与数据结构 Python数据结构与算法 牛客算法题 配置及工具插件 工具插件
-win10设置
-Git
-密码学基础 分组密码学原理 公钥密码学原理 二进制安全 项目 Vue-admin轮子 基于Django3的博客 站点推荐 学习网站推荐 编程比赛 [网络创收]( </description>
-    </item>
-    
-    <item>
-      <title>readme</title>
-      <link>https://stormblinger-ai.github.io/posts/readme/</link>
-      <pubDate>Sun, 25 Oct 2015 08:36:54 -0700</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/readme/</guid>
-      <description>Tale-roads 个人学习
-计算机基础 操作系统 计算机网络 计算机组成原理 计算机编译原理 Linux 编程开发 Python C++ JavaScript Django 数据库相关 MySQL Redis Elasticsearch 算法与数据结构 Python数据结构与算法 牛客算法题 配置及工具插件 工具插件
-win10设置
-Git
-密码学基础 分组密码学原理 公钥密码学原理 二进制安全 项目 Vue-admin轮子 基于Django3的博客 站点推荐 学习网站推荐 编程比赛 网络创收 </description>
-    </item>
-    
-    <item>
-      <title>Creating a New Theme</title>
-      <link>https://stormblinger-ai.github.io/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://stormblinger-ai.github.io/posts/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/goisforlovers/</guid>
-      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.</description>
-    </item>
-    
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://stormblinger-ai.github.io/posts/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
-Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313 Corresponding pseudo commands:</description>
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://stormblinger-ai.github.io/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/▾ images/logo.pngshould become
-▾ &amp;lt;root&amp;gt;/▾ static/▾ images/logo.pngAdditionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
-    </item>
-    
-    <item>
-      <title>Test 9</title>
-      <link>https://stormblinger-ai.github.io/posts/test-9/</link>
-      <pubDate>Thu, 09 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-9/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut accumsan sem, imperdiet malesuada erat. Nam condimentum eu turpis a suscipit. Nulla leo arcu, feugiat ac orci eget, imperdiet posuere dui. In laoreet rutrum nisi vitae pretium. Aliquam id fermentum diam, et hendrerit mi. Praesent eget tristique augue. Donec a malesuada nulla, sit amet bibendum libero. Cras id eleifend enim.
-You think you&amp;rsquo;ve got problems? What are you supposed to do if you are a manically depressed robot?</description>
-    </item>
-    
-    <item>
-      <title>Test 8</title>
-      <link>https://stormblinger-ai.github.io/posts/test-8/</link>
-      <pubDate>Wed, 08 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-8/</guid>
-      <description>Test 8</description>
-    </item>
-    
-    <item>
-      <title>Test 7</title>
-      <link>https://stormblinger-ai.github.io/posts/test-7/</link>
-      <pubDate>Tue, 07 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-7/</guid>
-      <description>Test 7</description>
-    </item>
-    
-    <item>
-      <title>Test 6</title>
-      <link>https://stormblinger-ai.github.io/posts/test-6/</link>
-      <pubDate>Mon, 06 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-6/</guid>
-      <description>Test 6</description>
-    </item>
-    
-    <item>
-      <title>Test 5</title>
-      <link>https://stormblinger-ai.github.io/posts/test-5/</link>
-      <pubDate>Sun, 05 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-5/</guid>
-      <description>Test 5</description>
-    </item>
-    
-    <item>
-      <title>Test 4</title>
-      <link>https://stormblinger-ai.github.io/posts/test-4/</link>
-      <pubDate>Sat, 04 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-4/</guid>
-      <description>Test 4</description>
-    </item>
-    
-    <item>
-      <title>Test 3</title>
-      <link>https://stormblinger-ai.github.io/posts/test-3/</link>
-      <pubDate>Fri, 03 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-3/</guid>
-      <description>Test 3</description>
-    </item>
-    
-    <item>
-      <title>Test 2</title>
-      <link>https://stormblinger-ai.github.io/posts/test-2/</link>
-      <pubDate>Thu, 02 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-2/</guid>
-      <description>Test 2</description>
-    </item>
-    
-    <item>
-      <title>Test 1</title>
-      <link>https://stormblinger-ai.github.io/posts/test-1/</link>
-      <pubDate>Wed, 01 Jan 1012 00:00:00 +0000</pubDate>
-      
-      <guid>https://stormblinger-ai.github.io/posts/test-1/</guid>
-      <description>Test 1 I am referencing a footnote1
-1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 fmt.Println(&amp;#34;{linenos=inline}&amp;#34;) 7} 1 2 3 4 5 6 7 package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;{linenos=table}&amp;#34;) } Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in dictum tortor.Morbi laoreet enim id sem euismod lobortis. Donec quam libero, bibendum non cursus vitae, dictum vel eros. I am the footnote&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Friends&#43;&#43;</title>
+        <link>https://stormblinger-ai.github.io/</link>
+        <description>show me the f**k code</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>Dayang747@163.com (去哪里寻找大腿)</managingEditor>
+            <webMaster>Dayang747@163.com (去哪里寻找大腿)</webMaster><lastBuildDate>Mon, 28 Aug 2023 12:05:28 &#43;0800</lastBuildDate>
+            <atom:link href="https://stormblinger-ai.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>AI人工智能</title>
+    <link>https://stormblinger-ai.github.io/ai%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</link>
+    <pubDate>Mon, 28 Aug 2023 12:05:28 &#43;0800</pubDate>
+    <author>去哪里寻找大腿</author>
+    <guid>https://stormblinger-ai.github.io/ai%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</guid>
+    <description><![CDATA[人工智能发展热点 **1.机器学习：**让计算机通过数据学习并不断优化自身算法的能力，就像是孩子从不断接触新事物中学习成长。 **2.深度学习：]]></description>
+</item>
+<item>
+    <title>AIGC应用场景</title>
+    <link>https://stormblinger-ai.github.io/aigc%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</link>
+    <pubDate>Thu, 20 Jul 2023 18:12:54 &#43;0800</pubDate>
+    <author>去哪里寻找大腿</author>
+    <guid>https://stormblinger-ai.github.io/aigc%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</guid>
+    <description><![CDATA[AIGC是指“AI Generative Content”，即人工智能生成内容。主要指自动生成各种类型的文本、图像、音频、视频等内容。这种技术可以应用于多个领域，]]></description>
+</item>
+<item>
+    <title>从SOA微服务到云原生</title>
+    <link>https://stormblinger-ai.github.io/%E4%BB%8Esoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%B0%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+    <pubDate>Mon, 08 May 2023 19:58:11 &#43;0800</pubDate>
+    <author>去哪里寻找大腿</author>
+    <guid>https://stormblinger-ai.github.io/%E4%BB%8Esoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%B0%E4%BA%91%E5%8E%9F%E7%94%9F/</guid>
+    <description><![CDATA[1，微服务架构区别于传统的单体软件架构，是一种为了适应当前互联网后台服务的「三高需求：高并发、高性能、高可用」而产生的的软件架构。 2，后端架]]></description>
+</item>
+<item>
+    <title>从web3到元宇宙</title>
+    <link>https://stormblinger-ai.github.io/%E4%BB%8Eweb3%E5%88%B0%E5%85%83%E5%AE%87%E5%AE%99/</link>
+    <pubDate>Fri, 28 Oct 2022 12:14:25 &#43;0800</pubDate>
+    <author>去哪里寻找大腿</author>
+    <guid>https://stormblinger-ai.github.io/%E4%BB%8Eweb3%E5%88%B0%E5%85%83%E5%AE%87%E5%AE%99/</guid>
+    <description><![CDATA[1，web3.0 Web 3.0是互联网的潜在下一阶段，一个运行在“区块链”技术之上的“去中心化”的互联网。Web 3.0的基础是区块链技术，而它又是]]></description>
+</item>
+<item>
+    <title>基于Vue.js&#43;Django的web项目 Django项目创建</title>
+    <link>https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/</link>
+    <pubDate>Fri, 18 Jun 2021 13:44:44 &#43;0800</pubDate>
+    <author>去哪里寻找大腿</author>
+    <guid>https://stormblinger-ai.github.io/%E5%9F%BA%E4%BA%8Evue.js-django%E7%9A%84web%E9%A1%B9%E7%9B%AE-django%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA/</guid>
+    <description><![CDATA[Django的创建与项目结构 虚拟环境+项目+APP创建 pycharm创建纯净的Python项目+虚拟环境 安装Django和相关库API 创建A]]></description>
+</item>
+<item>
+    <title>Python数据分析</title>
+    <link>https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
+    <pubDate>Wed, 18 Dec 2019 16:15:32 &#43;0800</pubDate>
+    <author>去哪里寻找大腿</author>
+    <guid>https://stormblinger-ai.github.io/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</guid>
+    <description><![CDATA[1，数据分析要点 -目的需求，明确分析逻辑 -数据处理分析 -数据可视化展示 2，相关介绍 1、方法论，分析的逻辑 1.1 PEST分析法 PEST分析是指宏观]]></description>
+</item>
+</channel>
 </rss>
